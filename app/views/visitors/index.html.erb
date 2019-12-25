@@ -1,12 +1,12 @@
 <%= link_to 'Enter Your Location', new_visitor_url, class: 'btn btn-primary btn-sm' %>
-<br>
-<br>
+<br><br><hr><br>
 
 <% if @country.present? && @city.present? %>
   <span><%= "Hello, from #{@country}, #{@city} Selected" %></span>
 <% end %>
 
 <% if @ip_country.present? && @ip_country.squish.upcase != @country.squish.upcase %>
+  <br><hr><br><br>
   <span>
     <%= "HEY it looks like you are from #{@ip_country}"  %>
   </span>
