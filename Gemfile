@@ -69,3 +69,4 @@ gem 'datagrid'
 gem 'kaminari'
 gem "breadcrumbs_on_rails"
 gem 'activerecord-import'
+gem 'geocoder'

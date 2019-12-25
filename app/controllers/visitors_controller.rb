@@ -4,7 +4,6 @@ class VisitorsController < ApplicationController
   add_breadcrumb 'Visitors'
 
   def index
-    redirect_to new_visitor_path
   end
 
   def new
@@ -12,15 +11,13 @@ class VisitorsController < ApplicationController
   end
 
   def submit
-    country = params[:visitor].try(:[], :country)
-    city = params[:visitor].try(:[], :city)
+    @country = params[:visitor].try(:[], :country)
+    @city = params[:visitor].try(:[], :city)
+    @ip_country = request.location.country
 
     respond_to do |format|
-      if country.present? && city.present?
-        format.html {
-          redirect_to new_visitor_path,
-          notice: "Hello, from #{country}, #{city} Selected"
-        }
+      if @country.present? && @city.present?
+        format.html { render :index }
       else
         format.html {
           redirect_to new_visitor_path,
