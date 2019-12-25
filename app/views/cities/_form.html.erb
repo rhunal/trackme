@@ -1,11 +1,28 @@
-
 <%= simple_form_for(@city) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.association :country %>
+    <div class="input-group input-group-sm mb-1">
+      <div class="input-group-prepend col-sm-3 p-0">
+        <span class="input-group-text w-100" id="">City Name</span>
+      </div>
+      <%= f.input_field :name,
+        as: :string,
+        class: 'form-control form-control-sm col-sm-8'
+      %>
+    </div>
+
+    <div class="input-group input-group-sm mb-1">
+      <div class="input-group-prepend col-sm-3 p-0">
+        <span class="input-group-text w-100" id="">Country</span>
+      </div>
+      <%= f.input_field :country_name,
+        collection: Country.pluck(:name),
+        class: 'form-control form-control-sm col-sm-8 autocomplete',
+        include_blank: '-- Select Your Country --'
+      %>
+    </div>
   </div>
 
   <div class="form-actions">
