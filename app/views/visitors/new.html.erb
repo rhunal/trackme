@@ -1,0 +1,32 @@
+<%= simple_form_for(:visitor, url: submit_visitors_path) do |f| %>
+  <%= f.error_notification %>
+
+  <hr><br>
+  <div class='small-fields col-sm-6'>
+    <div class="input-group input-group-sm mb-1">
+      <div class="input-group-prepend col-sm-3 p-0">
+        <span class="input-group-text w-100" id="">Country</span>
+      </div>
+      <%= f.input_field :country,
+        collection: Country.pluck(:name),
+        class: 'form-control form-control-sm col-sm-8',
+        include_blank: '-- Select Your Country --'
+      %>
+    </div>
+
+    <br><hr><br>
+
+    <div class="input-group input-group-sm mb-1" id='city_wrapper'>
+      <div class="input-group-prepend col-sm-3 p-0">
+        <span class="input-group-text w-100" id="">City</span>
+      </div>
+      <%= f.input_field :city,
+        collection: [],
+        class: 'form-control form-control-sm col-sm-8'
+      %>
+    </div>
+
+    <br><hr><br>
+
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>

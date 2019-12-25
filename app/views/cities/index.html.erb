@@ -1,0 +1,12 @@
+<%= render 'shared/header' %>
+
+<div class="row">
+  <div class="col-sm-3">
+    <%= datagrid_form_for @grid, method: :get, url: cities_path %>
+  </div>
+
+  <div class="col-sm-9">
+    <%= datagrid_table @grid %>
+    <%= paginate(@grid.assets) %>          
+  </div>
+</div>

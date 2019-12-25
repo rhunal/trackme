@@ -1,0 +1,31 @@
+<%= render 'shared/header' %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        Upload File
+      </div>
+      <div class="card-body">
+        <%= form_tag send("import_post_#{controller_name}_path"), multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Import" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 pl-0">
+    <div class="card mb-3">
+      <div class="card-header">
+        Download Sample Excel file (please edit and upload same file & maintain column namings)
+      </div>
+      <div class="card-body">
+        <%= link_to 'Download Sample',
+          send("download_sample_#{controller_name}_path"),
+          class: 'btn btn-primary'
+        %>
+      </div>
+    </div>
+  </div>
+</div>

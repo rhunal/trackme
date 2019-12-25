@@ -1,0 +1,45 @@
+<%= render 'shared/header' %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card mb-3">
+      <div class="card-header">
+        Countri-wise City Import
+      </div>
+
+      <div class="card-body">
+        <%= simple_form_for(:import, url: import_post_cities_path) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="input-group input-group-sm mb-1">
+            <div class="input-group-prepend col-sm-3 p-0">
+              <span class="input-group-text w-100" id="">Country</span>
+            </div>
+            <%= f.input_field :country,
+              collection: Country.pluck(:name),
+              class: 'form-control form-control-sm col-sm-8 autocomplete',
+              include_blank: '-- Select Your Country --'
+            %>
+          </div>
+
+          <%= f.input :file, as: :file %>
+          <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 pl-0">
+    <div class="card mb-3">
+      <div class="card-header">
+        Download Sample CSV file (please edit and upload same file & maintain column namings)
+      </div>
+      <div class="card-body">
+        <%= link_to 'Download Sample',
+          send("download_sample_#{controller_name}_path"),
+          class: 'btn btn-primary'
+        %>
+      </div>
+    </div>
+  </div>
+</div>

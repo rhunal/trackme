@@ -1,0 +1,127 @@
+// import the CSS framework
+// Do not use *= require in Sass or your other stylesheets will not be able to access the Bootstrap mixins and variables.
+@import "bootstrap";
+
+// make all images responsive by default
+img {
+  @extend .img-fluid;
+  margin: 0 auto;
+}
+// override for the 'Home' navigation link
+//.navbar-brand {
+//  font-size: inherit;
+//}
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+  @extend .col-md-6;
+  text-align: center;
+}
+.form {
+  @extend .col-md-6;
+}
+.form-centered {
+  @extend .col-md-6;
+  text-align: center;
+}
+.submit {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+}
+
+.btn-default {
+  @extend .btn;
+  @extend .btn-secondary;  
+}
+
+// apply styles to HTML elements
+// to make views framework-neutral
+main {
+  @extend .container-fluid;
+  @extend .mt-1;
+  /*margin-top: 30px; // accommodate the navbar*/
+}
+
+section {
+  @extend .row;
+  margin-top: 20px;
+}
+
+label {
+  margin-bottom: 0 ! important;
+}
+
+
+span.twitter-typeahead {
+  width: 100%;
+
+  .tt-menu {
+    @extend .dropdown-menu;
+  }
+
+  .tt-suggestion {
+    @extend .dropdown-item;
+  }
+
+  .tt-suggestion.tt-cursor {
+    @extend .dropdown-item.active;
+  }
+
+  .input-group & {
+    display: flex !important;
+    align-items: center;
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+
+    .tt-menu, .tt-hint, .tt-input {
+      width: 100%;
+    }
+
+  }
+
+  .tt-menu, .tt-hint, .tt-input {
+    width: 100%;
+  }
+
+}
+
+
+.small-fields {
+  select {
+    height: 18px ! important;
+  }
+
+  .input-group {
+    margin-bottom: 0 ! important;
+  }
+
+  .input-group-text {
+    background: transparent !important;
+    border: 0 !important;
+
+    padding: 0 5px 0 0 !important;
+    line-height: 20px !important;
+    text-align: left !important;
+  }
+
+  .form-control {
+    padding: 0 3px ! important;
+    line-height: 20px ! important;
+    font-size: 12px ! important;
+  }
+
+  .checkbox-label-small {
+    font-size: 12px ! important;
+  }
+
+  text-align: center;
+  font-size: x-large;
+}
+
+span {
+  font-size: x-large !important;
+}

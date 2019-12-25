@@ -1,0 +1,37 @@
+<div class="btn-toolbar justify-content-between mb-1" role="toolbar" aria-label="Toolbar with button groups">
+  <div>
+    <%= render_breadcrumbs :separator => ' / ' %>
+  </div>
+
+  <div>
+    <%= _back_link_tag controller_name, action_name %>
+
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+      <%= _edit_link_tag controller_name, action_name, request.parameters[:id] %>
+      <%= _delete_link_tag controller_name, action_name, request.parameters[:id] %>
+      <%= _new_link_tag controller_name, action_name %>
+
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<%= params[:search].present? ? 'true' : 'false'%>">
+          More
+        </button>
+
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+          <%- if action_name == 'index' %>
+            <%- grid_name = params.keys.select{|param| param.try(:split, '_').try(:second) == 'grid' }.try(:[], 0) %>
+
+            <%- if grid_name.present? %>
+              <%= link_to 'Export', params.permit(Hash[grid_name, params.try(:[], grid_name.to_sym).keys]).merge(format: :csv), class: 'dropdown-item' %>
+            <%- else %>
+              <%= link_to 'Export', params.permit().merge(format: :csv), class: 'dropdown-item' %>
+            <%- end %>
+
+            <%= _import_link_tag controller_name, action_name %>
+          <%- end %>
+          <%= yield :extra_more_links %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

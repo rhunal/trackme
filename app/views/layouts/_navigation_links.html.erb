@@ -1,0 +1,26 @@
+<% %w(countries cities).each do |nav_controller| %>
+  <li class="nav-item dropdown">
+    <% is_active = controller_name == nav_controller %>
+
+    <a class="nav-link dropdown-toggle <%= 'active' if is_active %>"
+      data-toggle="dropdown"
+      href="#"
+      role="button"
+      aria-haspopup="true"
+      aria-expanded="false">
+      <%= nav_controller.titleize %>
+    </a>
+
+    <div class="dropdown-menu">
+      <%= link_to "All #{nav_controller}",
+        send("#{nav_controller}_path"),
+        class: "dropdown-item #{ 'active' if is_active && action_name == 'index' }"
+      %>
+
+      <%= link_to "New #{nav_controller.singularize}",
+        send("new_#{nav_controller.singularize}_path"),
+        class: "dropdown-item #{ 'active' if is_active && action_name == 'new' }"
+      %>
+    </div>
+  </li>
+<% end %>
